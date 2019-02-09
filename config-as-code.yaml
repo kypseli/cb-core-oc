@@ -1,0 +1,17 @@
+jenkins:
+  agentProtocols:
+  - "Diagnostic-Ping"
+  - "JNLP4-connect"
+  - "OperationsCenter2"
+  - "Ping"
+kube:
+  podTemplatesConfiguration:
+    templates:
+      - name: maven
+        label: mavenpodtemplate
+        containers:
+          - name: maven
+            image: maven:3.3.9-jdk-8-alpine
+            ttyEnabled: true
+            command: cat
+            args: ""
