@@ -60,4 +60,3 @@ credentials:
               description: "GitHub PAT for beedemo-ops from JCasC"
               username: beedemo-ops
               password: ${github-ops-token}
-
