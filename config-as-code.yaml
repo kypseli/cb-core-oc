@@ -4,6 +4,13 @@ jenkins:
   - "JNLP4-connect"
   - "OperationsCenter2"
   - "Ping"
+credentials:
+  system:
+    - usernamePassword:
+      scope: GLOBAL
+      id: github-beedemo-ops
+      username: beedemo-ops
+      password: ${github-ops-token}
 kube:
   podTemplatesConfiguration:
     templates:
