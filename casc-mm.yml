@@ -56,7 +56,7 @@ credentials:
         credentials:
           - usernamePassword:
               scope: GLOBAL
-              id: github-beedemo-ops
+              id: github-beedemo-ops-casc
               description: "GitHub PAT for beedemo-ops from JCasC"
               username: beedemo-ops
               password: ${github-ops-token}
