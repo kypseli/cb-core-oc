@@ -1,0 +1,61 @@
+jenkins:
+  agentProtocols:
+  - "Diagnostic-Ping"
+  - "JNLP4-connect"
+  - "OperationsCenter2"
+  - "Ping"
+  crumbIssuer:
+    standard:
+      excludeClientIPFromCrumb: false
+  disableRememberMe: false
+  markupFormatter:
+    rawHtml:
+      disableSyntaxHighlighting: true
+  numExecutors: 0
+unclassified:
+  artifactManager:
+    artifactManagerFactories:
+      - jclouds:
+          provider: s3
+  slackNotifier:
+    teamDomain: beedemo-team
+    tokenCredentialId: beedemo-slack
+    room: "#ci"
+  globallibraries:
+    libraries:
+    - defaultVersion: "master"
+      name: "kypseli"
+      retriever:
+        modernSCM:
+          scm:
+            github:
+              credentialsId: "kypseli-github-token"
+              repoOwner: "kypseli"
+              repository: "pipeline-library"
+kube:
+  podTemplatesConfiguration:
+    templates:
+      - name: maven
+        label: mavenpodtemplate
+        containers:
+          - name: maven
+            image: maven:3.3.9-jdk-8-alpine
+            ttyEnabled: true
+            command: cat
+            args: ""
+aws:
+  s3:
+    container: "kypseli"
+    prefix: "cb-core/artifacts/"
+credentials:
+  system:
+    domainCredentials:
+      - domain :
+          name: "github.com"
+          description: "GitHub"
+        credentials:
+          - usernamePassword:
+              scope: GLOBAL
+              id: github-beedemo-ops
+              username: beedemo-ops
+              password: ${github-ops-token}
