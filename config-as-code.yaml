@@ -6,14 +6,12 @@ jenkins:
   - "Ping"
 credentials:
   system:
-    domainCredentials:
-      - domain :
-        credentials:
-          - usernamePassword:
-              scope:    GLOBAL
-              id:       github-beedemo-ops
-              username: beedemo-ops
-              password: ${github-ops-token}
+    - credentials:
+      - usernamePassword:
+        scope: GLOBAL
+        id: github-beedemo-ops
+        username: beedemo-ops
+        password: ${github-ops-token}
 kube:
   podTemplatesConfiguration:
     templates:
@@ -25,4 +23,3 @@ kube:
             ttyEnabled: true
             command: cat
             args: ""
-
