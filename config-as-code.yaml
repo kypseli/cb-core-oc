@@ -4,22 +4,10 @@ jenkins:
   - "JNLP4-connect"
   - "OperationsCenter2"
   - "Ping"
-credentials:
-  system:
-    - credentials:
-      - usernamePassword:
-        scope: GLOBAL
-        id: github-beedemo-ops
-        username: beedemo-ops
-        password: ${github-ops-token}
-kube:
-  podTemplatesConfiguration:
-    templates:
-      - name: maven2
-        label: maven2podtemplate
-        containers:
-          - name: maven
-            image: maven:3.3.9-jdk-8-alpine
-            ttyEnabled: true
-            command: cat
-            args: ""
+  securityRealm:
+    github:
+      githubWebUri: "https://github.com"
+      githubApiUri: "https://api.github.com"
+      clientID: "${GITHUB_CLIENT_ID}"
+      clientSecret: "${GITHUB_CLIENT_SECRET}"
+      oauthScopes: "read:org,user:email"
